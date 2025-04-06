@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers\Service;
+namespace App\Http\Controllers\Service;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -8,11 +8,11 @@ use Illuminate\View\View;
 
 class ServiceController extends Controller
 {
-    public function index(): View
+    public function getAllServices(): array
     {
         $services = DB::select('select * from services');
 
-        return view('service.index', ['services' => $services]);
+        return $services;
     }
 
     public function detail(string $url): View

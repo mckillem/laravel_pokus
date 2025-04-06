@@ -4,12 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
+    return Inertia::render('welcome', [
+        'services' => (new App\Http\Controllers\Service\ServiceController)->getAllServices()
+    ]);
 })->name('home');
-
-Route::get('/kontakt', function () {
-    return Inertia::render('contact');
-})->name('contact');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
