@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -26,5 +27,10 @@ class ContactController extends Controller
         ]);
 
         return redirect('/');
+    }
+
+    public function getAllContacts(): array
+    {
+        return DB::select('select * from contacts');
     }
 }
