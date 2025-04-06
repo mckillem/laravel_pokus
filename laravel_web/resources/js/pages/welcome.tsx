@@ -729,6 +729,9 @@ export default function Welcome() {
                         </div>
                     </main>
                 </div>
+                <footer className="text-white">
+                    Matěj Musil &copy; {new Date().getFullYear()}
+                </footer>
                 <div className="hidden h-14.5 lg:block"></div>
             </div>
         </>
