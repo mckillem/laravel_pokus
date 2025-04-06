@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Contact\ContactController;
+use App\Http\Controllers\Service\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -32,6 +34,17 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
+
+    Route::get('contact', [ContactController::class, 'create'])
+        ->name('contact');
+
+    Route::post('contact', [ContactController::class, 'store'])
+        ->name('contact');
+
+//    Route::get('detail/{service.url}', [ServiceController::class, 'detail'])
+    Route::get('detail', [ServiceController::class, 'detail'])
+//        ->name('detail/{service.url}');
+        ->name('detail');
 });
 
 Route::middleware('auth')->group(function () {

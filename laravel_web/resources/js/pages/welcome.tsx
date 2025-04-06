@@ -1,5 +1,6 @@
 import { type SharedData } from '@/types';
 import { Head, Link, usePage } from '@inertiajs/react';
+import TextLink from "@/components/text-link";
 
 export default function Welcome() {
     const { auth, services } = usePage<SharedData>().props;
@@ -48,15 +49,21 @@ export default function Welcome() {
                     <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
                         <div className="flex-1 rounded-br-lg rounded-bl-lg bg-white text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
                             <h1 className="mb-1 font-medium pb-2">Seznam služeb</h1>
-                            {services.map((service, index) => {
+                            {services.map((service: object, index: bigint) => {
                                 return (
                                     <div key={index}>
                                         <ul className="flex flex-col">
                                             <li className="relative flex items-center before:absolute before:top-1/2 before:bottom-0 before:left-[0.4rem] before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A]">
-                                                {service.title}
+                                                <TextLink
+                                                    // href={route('detail/' + service.url)}
+                                                    href={route('detail')}
+                                                    className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+                                                >
+                                                    {service.title}
+                                                </TextLink>
+                                                {/*<a href="detail/{service.url}">{service.title}</a>*/}
                                             </li>
                                         </ul>
-                                         {/*<a href="detail/{service.url}">{service.title }</a>*/}
                                     </div>
                                 )
                             })}
