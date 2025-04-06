@@ -30,6 +30,7 @@ export interface SharedData {
     sidebarOpen: boolean;
     [key: string]: unknown;
     services: array;
+    contacts: array;
 }
 
 export interface User {
